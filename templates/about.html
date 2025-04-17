@@ -1,0 +1,240 @@
+{% extends "base.html" %}
+
+{% block title %}About - Spotify Popularity Predictor{% endblock %}
+
+{% block content %}
+<style>
+    /* General Page Styles */
+    body {
+        font-family: 'Roboto', sans-serif;
+        background-color: #f4f7fc;
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* About Section Container */
+    .about-container {
+        max-width: 900px;
+        margin: 40px auto;
+        background: linear-gradient(to right, #ffffff, #f9f9f9);
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    /* Title Styling */
+    .about-container h1 {
+        color: #2c3e50;
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        font-weight: 600;
+    }
+
+    /* Paragraph Styling */
+    .about-container p {
+        font-size: 16px;
+        line-height: 1.8;
+        color: #555;
+        margin-bottom: 20px;
+        text-align: justify;
+    }
+
+    .about-container strong {
+        color: #2980b9;
+    }
+
+    /* Section Headings */
+    .about-container h2 {
+        color: #2c3e50;
+        font-size: 2rem;
+        margin-top: 30px;
+        margin-bottom: 15px;
+    }
+
+    /* List Styling */
+    .about-container ul, .about-container ol {
+        text-align: left;
+        margin-left: 20px;
+        margin-bottom: 30px;
+    }
+
+    /* Key Features Table */
+    .feature-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 30px;
+    }
+
+    .feature-table th, .feature-table td {
+        padding: 12px;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+
+    .feature-table th {
+        background-color: #f4f4f4;
+        color: #333;
+        font-weight: 600;
+    }
+
+    .feature-table tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    .feature-table tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    /* Meet the Team Section */
+    .team-list {
+        list-style-type: none;
+        padding: 0;
+        margin-bottom: 30px;
+    }
+
+    .team-list li {
+        font-size: 18px;
+        color: #333;
+        margin-bottom: 15px;
+    }
+
+    .team-list li strong {
+        color: #2980b9;
+    }
+
+    /* Button Styling */
+    .cta-button {
+        background-color: #2980b9;
+        color: #fff;
+        padding: 12px 25px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-size: 16px;
+        transition: background-color 0.3s;
+    }
+
+    .cta-button:hover {
+        background-color: #3498db;
+    }
+
+    /* Media Query for Responsiveness */
+    @media (max-width: 768px) {
+        .about-container {
+            padding: 20px;
+        }
+
+        .about-container h1 {
+            font-size: 2rem;
+        }
+
+        .feature-table th, .feature-table td {
+            padding: 10px;
+        }
+    }
+</style>
+
+<div class="about-container">
+    <h1>About This Project</h1>
+
+    <p>
+        The <strong>Spotify Song Popularity Prediction System</strong> is a machine learning-based web application designed to determine the potential popularity of songs based on their audio features. 
+        These features include variables such as:
+    </p>
+
+    <ul>
+        <li>Danceability</li>
+        <li>Energy</li>
+        <li>Loudness</li>
+        <li>Speechiness</li>
+        <li>Acousticness</li>
+        <li>Instrumentalness</li>
+        <li>Valence</li>
+        <li>Tempo</li>
+        <li>Duration</li>
+        <li>Chorus Hit</li>
+        <li>Sections</li>
+        <li>And more...</li>
+    </ul>
+
+    <p>
+        These inputs are processed and scaled using a trained data scaler, and then passed into a Machine Learning model (<strong>Logistic Regression</strong> / <strong>XGBoost</strong>) which predicts whether the song is likely to be popular or not.
+    </p>
+
+    <h2>How It Works</h2>
+    <ol>
+        <li>User logs in or signs up</li>
+        <li>Inputs song feature values into the predictor form</li>
+        <li>System processes and predicts the result</li>
+        <li>Displays whether the song is <strong>Popular</strong> or <strong>Not Popular</strong></li>
+    </ol>
+
+    <h2>Key Features for Prediction</h2>
+    <table class="feature-table">
+        <thead>
+            <tr>
+                <th>Feature</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Danceability</td>
+                <td>Measures how suitable a track is for dancing (0 to 1 scale).</td>
+            </tr>
+            <tr>
+                <td>Energy</td>
+                <td>Represents the intensity and activity level of a track.</td>
+            </tr>
+            <tr>
+                <td>Loudness</td>
+                <td>Measures the overall loudness in decibels.</td>
+            </tr>
+            <tr>
+                <td>Speechiness</td>
+                <td>Determines the presence of spoken words in a track.</td>
+            </tr>
+            <tr>
+                <td>Acousticness</td>
+                <td>Measures the degree of acoustic sounds in a song.</td>
+            </tr>
+            <tr>
+                <td>Instrumentalness</td>
+                <td>Predicts whether a track is instrumental.</td>
+            </tr>
+            <tr>
+                <td>Valence</td>
+                <td>Reflects the positivity or mood of a song.</td>
+            </tr>
+            <tr>
+                <td>Tempo</td>
+                <td>Defines the speed of a song in beats per minute (BPM).</td>
+            </tr>
+            <tr>
+                <td>Time Signature</td>
+                <td>Represents the musical time signature (e.g., 4/4, 3/4).</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Meet the Team</h2>
+    <ul class="team-list">
+        <li><strong>Charan Kumar</strong> (Team Lead)</li>
+        <li>Jhonsy</li>
+        <li>Pavan Kumar Reddy</li>
+        <li>Varadaraj</li>
+    </ul>
+
+    <p>
+        We built this system as part of our final year project to demonstrate the application of machine learning in the music industry and provide users with insights into song trends using data-driven approaches.
+    </p>
+
+    <p>
+        Thank you for using our system! 🎶
+    </p>
+
+    <a href="/" class="cta-button">Go Back to Home</a>
+</div>
+
+{% endblock %}

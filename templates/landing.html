@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Spotify Popularity Predictor{% endblock %}
+
+{% block content %}
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header Section */
+        header {
+            background-color: #1DB954;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 18px;
+            font-weight: 300;
+        }
+
+        /* Main Content Section */
+        .main-content {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .main-content h2 {
+            color: #333;
+            font-size: 28px;
+            margin-top: 0;
+        }
+
+        .main-content p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        /* Call to Action Section */
+        .cta-button {
+            display: inline-block;
+            background-color: #1DB954;
+            color: white;
+            font-size: 18px;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #1ed760;
+        }
+
+        /* Mission and Vision Section */
+        .mission, .vision {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .mission h3, .vision h3 {
+            color: #333;
+            font-size: 26px;
+            margin-bottom: 20px;
+        }
+
+        .mission p, .vision p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        /* Section Headers */
+        h3 {
+            color: #333;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 32px;
+            }
+
+            .cta-button {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+
+    <header>
+        <h1>Welcome to Spotify Song Popularity Prediction System</h1>
+        <p>AI-Powered Music Analysis to Predict Song Popularity</p>
+    </header>
+
+    <div class="container">
+        <div class="main-content">
+            <h2>About the Project</h2>
+            <p>
+                The Spotify Song Popularity Prediction System leverages machine learning techniques to classify songs as "Popular" or "Not Popular" based on their audio features.
+                This system provides data-driven insights for artists, producers, record labels, and streaming platforms to understand what makes a song successful.
+            </p>
+            <p><strong>Try it now!</strong> Sign up or log in to explore the predictions powered by AI and machine learning.</p>
+            <a href="/login" class="cta-button">Get Started</a>
+        </div>
+
+        <div class="mission">
+            <h3>Our Mission</h3>
+            <p>
+                Our mission is to develop an accurate machine learning model that can predict the popularity of a song based on its audio features.
+                This tool is designed to help artists, producers, record labels, and streaming platforms make data-driven decisions about music production, marketing, and audience engagement.
+                We aim to enhance the music industry's ability to forecast trends and optimize strategies for song success.
+            </p>
+        </div>
+
+        <div class="vision">
+            <h3>Our Vision</h3>
+            <p>
+                Our long-term vision is to revolutionize the music industry by integrating our platform with streaming services like Spotify, Apple Music, and YouTube Music, providing real-time insights into song popularity.
+                This will help professionals in the music industry make informed decisions and optimize their content for maximum impact. 
+                We strive to continuously improve our model and offer valuable insights to artists, producers, and labels globally.
+            </p>
+        </div>
+    </div>
+{% endblock %}

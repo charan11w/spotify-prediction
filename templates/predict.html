@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Predict Popularity{% endblock %}
+
+{% block content %}
+<h2>Spotify Popularity Predictor</h2>
+<form id="prediction-form">
+    <div class="form-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:5px">
+        {% for feature in feature_names %}
+            <div>
+                <label>{{ feature }}</label>
+                <input type="number" step="any" name="{{ feature }}" required>
+            </div>
+        {% endfor %}
+    </div>
+    <button type="submit">Predict</button>
+</form>
+<div id="result"></div>
+
+<script>
+    document.getElementById("prediction-form").onsubmit = async function(event) {
+        event.preventDefault();
+        let formData = new FormData(this);
+        let response = await fetch("/predict", { method: "POST", body: formData });
+        let data = await response.json();
+        document.getElementById("result").innerText = data.prediction || "Error: " + data.error;
+    };
+</script>
+
+{% endblock %}
